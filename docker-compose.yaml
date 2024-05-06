@@ -3,18 +3,21 @@ version: '3'
 services:
   frontend:
     build:
-      context: ./frontend
+      context: ./src/frontend
       dockerfile: Dockerfile
     ports:
-      - 8080:80
-      - 8081:443
+      - 8080:4000
+    networks:
+      - app
   backend:
     build:
-      context: ./backend
+      context: ./src/backend
       dockerfile: Dockerfile
     ports:
       - 9090:80
       - 9091:443
+    networks:
+      - app
   nginx:
     build:
       context: ./nginx
@@ -22,11 +25,10 @@ services:
     ports:
       - 80:80
       - 443:443
-    volumes:
-      - ./certbot/www:/var/www/certbot/:ro
-      - ./certbot/conf/:/etc/nginx/ssl/:ro
-  certbot:
-    image: certbot/certbot:latest
-    volumes:
-      - ./certbot/www/:/var/www/certbot:rw
-      - ./certbot/conf/:/etc/letsencrypt/:rw
+    networks:
+      - app
+
+networks:
+  app:
+    name: app
+
