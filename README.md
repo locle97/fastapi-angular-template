@@ -1,5 +1,77 @@
 # FastAPI backend and Angular frontend template
 
+This is a template for building web applications with FastAPI and Angular. The backend is built with FastAPI, PostgreSQL, SQLAlchemy, and Pydantic. The frontend is built with Angular, Angular Material, and Angular Flex-Layout. The project structure is organized in such a way that the backend and frontend are separated into their own directories for easy development and deployment. The backend is served by Uvicorn and the frontend is served by the Angular CLI development server. Both the backend and frontend can be deployed using Docker and Docker Compose.
+
+## Table of Contents
+
+- [Project Structure](#project-structure)
+- [Features](#features)
+- [Requirements](#requirements)
+- [Development](#development)
+- [Deployment](#deployment)
+
+## Project Structure
+
+The project structure should be organized as follows:
+
+```
+src
+│
+└───backend
+│   │   main.py
+│   │   requirements.txt
+│   │
+│   └───app
+│       │   __init__.py
+│       │   db.py
+│       │   models.py
+│       │   routers.py
+│       │   schemas.py
+```
+
+### Frontend
+```
+src
+│
+└───frontend
+│   │   angular.json
+│   │   package.json
+│   │   tsconfig.json
+│   │   ...
+│   │
+│   └───src
+│       │   app
+│       │   assets
+│       │   environments
+│       │   ...
+```
+
+## Features
+
+- Backend:
+  - FastAPI
+  - PostgreSQL
+  - SQLAlchemy
+  - Alembic
+  - Pydantic
+  - Uvicorn
+  - Docker
+  - Docker Compose
+- Frontend:
+  - Angular
+  - Angular Material
+  - Angular Flex-Layout
+  - Angular CLI
+  - Docker
+  - Docker Compose
+
+## Requirements
+
+- [Python](https://www.python.org/downloads/)
+- [Node.js](https://nodejs.org/en/download/)
+- [Docker](https://www.docker.com/get-started)
+- [Docker Compose](https://docs.docker.com/compose/install/)
+
 ## Development
 
 1. Clone the repository:
