@@ -1,2 +1,4 @@
 fastapi
 pydantic
+starlette
+pydantic_settings
