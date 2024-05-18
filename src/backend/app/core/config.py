@@ -43,5 +43,7 @@ class Settings(BaseSettings):
             path=self.POSTGRES_DB,
         )
 
+    ASSETS_DIR: str = "D:\\Coding\\Research\\fastapi-angular-template\\assets\\"
+
 
 settings = Settings()  # type: ignore
