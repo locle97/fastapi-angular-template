@@ -18,6 +18,14 @@ services:
     environment:
       - API_V1_STR=${API_V1_STR}
       - PROJECT_NAME=${PROJECT_NAME}
+      - POSTGRES_SERVER=db
+      - POSTGRES_PORT=${POSTGRES_PORT}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER?Variable not set}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD?Variable not set}
+    depends_on:
+      - db
+
   nginx:
     build:
       context: ./nginx
@@ -27,6 +35,9 @@ services:
       - 443:443
     networks:
       - app
+    depends_on:
+      - backend
+      - frontend
   db:
     image: postgres:12
     restart: always
@@ -41,6 +52,8 @@ services:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD?Variable not set}
       - POSTGRES_USER=${POSTGRES_USER?Variable not set}
       - POSTGRES_DB=${POSTGRES_DB?Variable not set}
+    networks:
+        - app
 
 networks:
   app:
