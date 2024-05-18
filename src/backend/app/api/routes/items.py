@@ -5,9 +5,11 @@ from fastapi import APIRouter
 router = APIRouter()
 
 
-@router.get("/")
+@router.get("")
 def read_root():
-    return {"Hello": "World"}
+    return [{"id": 1, "name": "Foo", "completed": False},
+            {"id": 2, "name": "Bar", "completed": True},
+            {"id": 3, "name": "FooBar", "completed": False}]
 
 
 @router.get("/{item_id}")
