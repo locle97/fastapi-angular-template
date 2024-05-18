@@ -1,4 +1,6 @@
 fastapi
 pydantic
+psycopg2
 starlette
 pydantic_settings
+sqlmodel

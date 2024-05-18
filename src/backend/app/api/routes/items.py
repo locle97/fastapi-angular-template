@@ -1,15 +1,18 @@
 from typing import Union
+from sqlmodel import select
 
 from fastapi import APIRouter
+from app.core.models import Item
+from app.api.deps import SessionDep
 
 router = APIRouter()
 
 
 @router.get("")
-def read_root():
-    return [{"id": 1, "name": "Foo", "completed": False},
-            {"id": 2, "name": "Bar", "completed": True},
-            {"id": 3, "name": "FooBar", "completed": False}]
+def get_items(session: SessionDep) -> list[Item]:
+    statement = select(Item)
+    items = session.exec(statement).all()
+    return items
 
 
 @router.get("/{item_id}")
